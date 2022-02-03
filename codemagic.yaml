@@ -1,18 +1,18 @@
-definitions: 
+definitions:
   environment_versions: &environment_version
-  vars: 
-   XCODE_PROJECT: "Codemagician.xcodeproj"
-   XCODE_SCHEME: "Codemagician"
-   BUNDLE_ID: "com.rudrankriyam.codemagician"
+    vars:
+      XCODE_PROJECT: "Codemagician.xcodeproj"
+      XCODE_SCHEME: "Codemagician"
+      BUNDLE_ID: "com.rudrankriyam.codemagician"
 
 workflows:
   testing-workflow:
     name: Testing Workflow
     working_directory: Codemagician
     environment:
-      << : *environment_version
+      <<: *environment_version
     scripts:
-      - name: Build project 
+      - name: Build project
         script: |
           xcodebuild build \
           --project "$XCODE_PROJECT" \
@@ -20,8 +20,8 @@ workflows:
           --CODE_SIGN_INDENTITY="" \
           --CODE_SIGNING_REQUIRED=NO \
           --CODE_SIGNING_ALLOWED=NO
-      - name: Test project 
-        script: | 
+      - name: Test project
+        script: |
           xcode-project run-tests \
           --workspace MyAwesomeApp.xcworkspace \
           --scheme MyAwesomeApp \
