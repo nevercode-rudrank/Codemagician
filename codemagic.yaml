@@ -14,16 +14,11 @@ workflows:
     scripts:
       - name: Build project
         script: |
-          xcodebuild build \
-          --project "$XCODE_PROJECT" \
-          --scheme "$XCODE_SCHEME" \
-          --CODE_SIGN_INDENTITY="" \
-          --CODE_SIGNING_REQUIRED=NO \
-          --CODE_SIGNING_ALLOWED=NO
+          - xcodebuild build -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME" CODE_SIGN_INDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
       - name: Test project
         script: |
           xcode-project run-tests \
-          --workspace MyAwesomeApp.xcworkspace \
-          --scheme MyAwesomeApp \
-          --device "iPhone 11"
+          --project "$XCODE_PROJECT" \
+          --scheme "$XCODE_SCHEME" \
+          --device "iPhone 12"
         test_report: build/ios/test/*.xml
