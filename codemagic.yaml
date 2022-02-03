@@ -1,5 +1,5 @@
 definitions: 
-  environment_versions: &environment_versions
+  environment_versions: &environment_version
   vars: 
    XCODE_PROJECT: "Codemagician.xcodeproj"
    XCODE_SCHEME: "Codemagician"
@@ -8,8 +8,9 @@ definitions:
 workflows:
   testing-workflow:
     name: Testing Workflow
+    working_directory: Codemagician
     environment:
-      << : *environment_versions
+      << : *environment_version
     scripts:
       - name: Build project 
         script: |
