@@ -1,0 +1,28 @@
+definitions: 
+  environment_versions: &environment_verions
+  vars: 
+   XCODE_PROJECT: "Codemagician.xcodeproj"
+   XCODE_SCHEME: "Codemagician"
+   BUNDLE_ID: "com.rudrankriyam.codemagician"
+
+workflows:
+  testing-workflow:
+    name: Testing Workflow
+    environment:
+      << : *quoting_environment_versions
+    scripts:
+      - name: Build project 
+        script: |
+          xcodebuild build \
+          --project "$XCODE_PROJECT" \
+          --scheme "$XCODE_SCHEME" \
+          --CODE_SIGN_INDENTITY="" \
+          --CODE_SIGNING_REQUIRED=NO \
+          --CODE_SIGNING_ALLOWED=NO
+      - name: Test project 
+        script: | 
+          xcode-project run-tests \
+          --workspace MyAwesomeApp.xcworkspace \
+          --scheme MyAwesomeApp \
+          --device "iPhone 11"
+        test_report: build/ios/test/*.xml
