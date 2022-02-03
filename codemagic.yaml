@@ -18,7 +18,6 @@ workflows:
       - name: Test project
         script: |
           xcode-project run-tests \
-          --project "$XCODE_PROJECT" \
-          --scheme "$XCODE_SCHEME" \
-          --device "iPhone 12"
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME" \
         test_report: build/ios/test/*.xml
