@@ -65,7 +65,7 @@ definitions:
 
       submit_to_app_store: true
       release_type: SCHEDULED
-      earliest_release_date: 2021-12-29T14:00:00+00:00
+      earliest_release_date: 2021-02-09T14:00:00+00:00
       copyright: 2021 Nevercode Ltd
 
   slack_publish: &slack_publish
