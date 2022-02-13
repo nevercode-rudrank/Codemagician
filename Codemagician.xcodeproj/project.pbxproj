@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9D5F0427B96CA700ABB8C4 /* CodemagicianScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D5F0327B96CA700ABB8C4 /* CodemagicianScreenshotTests.swift */; };
+		0A9D5F0627B96CA700ABB8C4 /* CodemagicianScreenshotTestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D5F0527B96CA700ABB8C4 /* CodemagicianScreenshotTestsLaunchTests.swift */; };
+		0A9D5F0F27B97E4600ABB8C4 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D5F0E27B97E4600ABB8C4 /* SnapshotHelper.swift */; };
 		0AEFB26827AC7DFB00145ACC /* CodemagicianApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEFB26727AC7DFB00145ACC /* CodemagicianApp.swift */; };
 		0AEFB26A27AC7DFB00145ACC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEFB26927AC7DFB00145ACC /* ContentView.swift */; };
 		0AEFB26C27AC7DFC00145ACC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFB26B27AC7DFC00145ACC /* Assets.xcassets */; };
@@ -17,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0A9D5F0727B96CA700ABB8C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AEFB25C27AC7DFB00145ACC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AEFB26327AC7DFB00145ACC;
+			remoteInfo = Codemagician;
+		};
 		0AEFB27527AC7DFC00145ACC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0AEFB25C27AC7DFB00145ACC /* Project object */;
@@ -34,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A9D5F0127B96CA700ABB8C4 /* CodemagicianScreenshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodemagicianScreenshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A9D5F0327B96CA700ABB8C4 /* CodemagicianScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodemagicianScreenshotTests.swift; sourceTree = "<group>"; };
+		0A9D5F0527B96CA700ABB8C4 /* CodemagicianScreenshotTestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodemagicianScreenshotTestsLaunchTests.swift; sourceTree = "<group>"; };
+		0A9D5F0E27B97E4600ABB8C4 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		0AEFB26427AC7DFB00145ACC /* Codemagician.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Codemagician.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEFB26727AC7DFB00145ACC /* CodemagicianApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodemagicianApp.swift; sourceTree = "<group>"; };
 		0AEFB26927AC7DFB00145ACC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +62,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0A9D5EFE27B96CA700ABB8C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AEFB26127AC7DFB00145ACC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,12 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A9D5F0227B96CA700ABB8C4 /* CodemagicianScreenshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A9D5F0327B96CA700ABB8C4 /* CodemagicianScreenshotTests.swift */,
+				0A9D5F0527B96CA700ABB8C4 /* CodemagicianScreenshotTestsLaunchTests.swift */,
+				0A9D5F0E27B97E4600ABB8C4 /* SnapshotHelper.swift */,
+			);
+			path = CodemagicianScreenshotTests;
+			sourceTree = "<group>";
+		};
 		0AEFB25B27AC7DFB00145ACC = {
 			isa = PBXGroup;
 			children = (
 				0AEFB26627AC7DFB00145ACC /* Codemagician */,
 				0AEFB27727AC7DFC00145ACC /* CodemagicianTests */,
 				0AEFB28127AC7DFC00145ACC /* CodemagicianUITests */,
+				0A9D5F0227B96CA700ABB8C4 /* CodemagicianScreenshotTests */,
 				0AEFB26527AC7DFB00145ACC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +120,7 @@
 				0AEFB26427AC7DFB00145ACC /* Codemagician.app */,
 				0AEFB27427AC7DFC00145ACC /* CodemagicianTests.xctest */,
 				0AEFB27E27AC7DFC00145ACC /* CodemagicianUITests.xctest */,
+				0A9D5F0127B96CA700ABB8C4 /* CodemagicianScreenshotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +165,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0A9D5F0027B96CA700ABB8C4 /* CodemagicianScreenshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A9D5F0B27B96CA700ABB8C4 /* Build configuration list for PBXNativeTarget "CodemagicianScreenshotTests" */;
+			buildPhases = (
+				0A9D5EFD27B96CA700ABB8C4 /* Sources */,
+				0A9D5EFE27B96CA700ABB8C4 /* Frameworks */,
+				0A9D5EFF27B96CA700ABB8C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A9D5F0827B96CA700ABB8C4 /* PBXTargetDependency */,
+			);
+			name = CodemagicianScreenshotTests;
+			productName = CodemagicianScreenshotTests;
+			productReference = 0A9D5F0127B96CA700ABB8C4 /* CodemagicianScreenshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		0AEFB26327AC7DFB00145ACC /* Codemagician */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0AEFB28827AC7DFC00145ACC /* Build configuration list for PBXNativeTarget "Codemagician" */;
@@ -192,9 +243,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					0A9D5F0027B96CA700ABB8C4 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 0AEFB26327AC7DFB00145ACC;
+					};
 					0AEFB26327AC7DFB00145ACC = {
 						CreatedOnToolsVersion = 13.3;
 					};
@@ -224,11 +279,19 @@
 				0AEFB26327AC7DFB00145ACC /* Codemagician */,
 				0AEFB27327AC7DFC00145ACC /* CodemagicianTests */,
 				0AEFB27D27AC7DFC00145ACC /* CodemagicianUITests */,
+				0A9D5F0027B96CA700ABB8C4 /* CodemagicianScreenshotTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0A9D5EFF27B96CA700ABB8C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AEFB26227AC7DFB00145ACC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,6 +318,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0A9D5EFD27B96CA700ABB8C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A9D5F0627B96CA700ABB8C4 /* CodemagicianScreenshotTestsLaunchTests.swift in Sources */,
+				0A9D5F0427B96CA700ABB8C4 /* CodemagicianScreenshotTests.swift in Sources */,
+				0A9D5F0F27B97E4600ABB8C4 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AEFB26027AC7DFB00145ACC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +357,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0A9D5F0827B96CA700ABB8C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0AEFB26327AC7DFB00145ACC /* Codemagician */;
+			targetProxy = 0A9D5F0727B96CA700ABB8C4 /* PBXContainerItemProxy */;
+		};
 		0AEFB27627AC7DFC00145ACC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0AEFB26327AC7DFB00145ACC /* Codemagician */;
@@ -297,6 +375,44 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0A9D5F0927B96CA700ABB8C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YQZQG7N4WG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudrankriyam.CodemagicianScreenshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Codemagician;
+			};
+			name = Debug;
+		};
+		0A9D5F0A27B96CA700ABB8C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YQZQG7N4WG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudrankriyam.CodemagicianScreenshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Codemagician;
+			};
+			name = Release;
+		};
 		0AEFB28627AC7DFC00145ACC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -550,6 +666,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0A9D5F0B27B96CA700ABB8C4 /* Build configuration list for PBXNativeTarget "CodemagicianScreenshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A9D5F0927B96CA700ABB8C4 /* Debug */,
+				0A9D5F0A27B96CA700ABB8C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0AEFB25F27AC7DFB00145ACC /* Build configuration list for PBXProject "Codemagician" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -1,129 +1,13 @@
-definitions:
-  environment_versions: &environment_version
-    vars:
-      XCODE_PROJECT: "Codemagician.xcodeproj"
-      XCODE_SCHEME: "Codemagician"
-      BUNDLE_ID: "com.rudrankriyam.codemagician"
-      APP_STORE_APP_ID: 1608424595
-
-  scripts:
-    - &ios_initialize_keychain
-      name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-      script: |
-        keychain initialize
-    - &fetch_signing_files
-      name: Fetch signing files
-      script: |
-        app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
-    - &add_certs_to_keychain
-      name: Add certs to keychain
-      script: |
-        keychain add-certificates
-    - &use_profiles
-      name: Set up code signing settings on Xcode project
-      script: |
-        xcode-project use-profiles
-    - &increment_ios_build_number
-      name: Increment build number
-      script: |
-        #!/bin/sh
-        set -ex
-        cd $FCI_BUILD_DIR
-        # agvtool new-version -all $(($BUILD_NUMBER + 1))
-        agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number $APP_STORE_APP_ID) + 1))
-    - &build_ipa
-      name: Build ipa
-      script: |
-        xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
-
-  artifacts:
-    - &ipa build/ios/ipa/*.ipa
-    - &xcode_log /tmp/xcodebuild_logs/*.log
-    - &dsym $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-    - &app $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-
-  email_release: &email_release
-    email:
-      recipients:
-        - rudrank@nevercode.io
-      notify:
-        success: true
-        failure: true
-  ios_testflight: &ios_testflight
-    app_store_connect:
-      api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-      key_id: $APP_SPECIFIC_PASSWORD
-      issuer_id: $APP_STORE_CONNECT_ISSUER_ID
-
-      submit_to_testflight: true
-
-  ios_publish: &ios_publish
-    app_store_connect:
-      api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-      key_id: $APP_SPECIFIC_PASSWORD
-      issuer_id: $APP_STORE_CONNECT_ISSUER_ID
-
-      submit_to_app_store: true
-      release_type: SCHEDULED
-      earliest_release_date: 2022-02-09T14:00:00+00:00
-      copyright: 2021 Nevercode Ltd
-
-  slack_publish: &slack_publish
-    slack:
-      channel: "#builds"
-
 workflows:
-  testing-workflow:
-    name: Testing Workflow
-    working_directory: Codemagician
+  ios-publish-fastlane:
+    name: iOS Publish Fastlane
     environment:
-      <<: *environment_version
+      xcode: latest
+      cocoapods: default
     scripts:
-      - name: Build project
-        script: |
-          xcodebuild build -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME" CODE_SIGN_INDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
-      - name: Test project
-        script: |
-          xcode-project run-tests \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME" \
-        test_report: build/ios/test/*.xml
-  testflight-workflow:
-    name: Testflight Workflow
-    working_directory: Codemagician
-    environment:
-      <<: *environment_version
-    scripts:
-      - *ios_initialize_keychain
-      - *fetch_signing_files
-      - *add_certs_to_keychain
-      - *use_profiles
-      - *increment_ios_build_number
-      - *build_ipa
+      - bundle install
+      - bundle exec fastlane snapshot
     artifacts:
-      - *ipa
-      - *dsym
-    publishing:
-      <<: *ios_testflight
-      <<: *email_release
-      <<: *slack_publish
-
-  publishing-workflow:
-    name: App Store Publishing Workflow
-    working_directory: Codemagician
-    environment:
-      <<: *environment_version
-    scripts:
-      - *ios_initialize_keychain
-      - *fetch_signing_files
-      - *add_certs_to_keychain
-      - *use_profiles
-      - *increment_ios_build_number
-      - *build_ipa
-    artifacts:
-      - *ipa
-      - *dsym
-    publishing:
-      <<: *ios_publish
-      <<: *email_release
-      <<: *slack_publish
+      - ./*.ipa
+      - ./*.dSYM.zip
+      - ./screenshots
