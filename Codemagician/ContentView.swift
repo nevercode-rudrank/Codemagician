@@ -8,36 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-  private let url = URL(string: "https://blog.codemagic.io/uploads/covers/codemagic-blog-header-ios-publishing.png")
-
   var body: some View {
-    NavigationView {
-      Group {
-        if let url = url {
-          AsyncImage(url: url) { phase in
-            switch phase {
-              case .success(let image):
-                image
-                  .resizable()
-                  .scaledToFill()
-
-              case .empty:
-                ProgressView()
-
-              case .failure(let error):
-                Text(error.localizedDescription)
-
-              @unknown default:
-                fatalError()
-            }
-          }
-        } else {
-          Text("Wrong URL")
-        }
+    TabView {
+      ForEach(OnboardingModel.demo, id: \.title) { model in
+        OnboardingView(model: model)
       }
-      .navigationTitle("Codemagician")
     }
-    .navigationViewStyle(.stack)
+    .tabViewStyle(.page(indexDisplayMode: .always))
   }
 }
 

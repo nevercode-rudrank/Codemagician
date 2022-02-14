@@ -1,14 +1,13 @@
 workflows:
-  ios-publish-fastlane:
-    name: iOS Publish Fastlane
+  ios-screenshots-fastlane:
+    name: iOS Screenshots Fastlane
     environment:
       xcode: latest
       cocoapods: default
     scripts:
-      - gem install bundler:2.3.4
       - bundle install
+      - name: Add 12.9 2nd Gen iPad
+        script: xcrun simctl create "iPad Pro (12.9-inch) (2nd generation)" "com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-" "com.apple.CoreSimulator.SimRuntime.iOS-15-2"
       - bundle exec fastlane snapshot
     artifacts:
-      - ./*.ipa
-      - ./*.dSYM.zip
       - ./screenshots

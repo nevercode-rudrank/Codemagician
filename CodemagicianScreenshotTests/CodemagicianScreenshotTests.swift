@@ -8,11 +8,12 @@
 import XCTest
 
 class CodemagicianScreenshotTests: XCTestCase {
+  var app: XCUIApplication!
 
   override func setUpWithError() throws {
     continueAfterFailure = false
 
-    let app = XCUIApplication()
+    app = XCUIApplication()
     setupSnapshot(app)
     app.launch()
   }
@@ -21,17 +22,26 @@ class CodemagicianScreenshotTests: XCTestCase {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
   }
 
-  func testExample() throws {
-    // UI tests must launch the application that they test.
-    let app = XCUIApplication()
-    app.launch()
-
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-  }
-
   func testTakeScreenshots() {
-    snapshot("01-HomeScreen", waitForLoadingIndicator: true)
+    let scrollView = app.scrollViews.element(boundBy: 0)
+
+    snapshot("01-CICDWithCodemagicScreen")
+
+    scrollView.swipeLeft()
+
+    snapshot("02-AutomatedTestsScreen")
+
+    scrollView.swipeLeft()
+
+    snapshot("03-CLIToolsScreen")
+
+    scrollView.swipeLeft()
+
+    snapshot("04-PostProcessingActionsScreen")
+
+    scrollView.swipeLeft()
+
+    snapshot("05-ContinuousDeliveryScreen")
   }
 
   func testLaunchPerformance() throws {
