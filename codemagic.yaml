@@ -1,6 +1,7 @@
 workflows:
   ios-screenshots-fastlane:
     name: iOS Screenshots Fastlane
+    instance_type: mac_mini_m1
     environment:
       xcode: latest
       cocoapods: default
