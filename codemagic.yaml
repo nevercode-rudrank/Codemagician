@@ -1,14 +1,33 @@
 workflows:
-  ios-screenshots-fastlane:
-    name: iOS Screenshots Fastlane
-    instance_type: mac_mini_m1
+  ios-codesigning:
+    name: Codemagician iOS Code Signing Example
+    max_build_duration: 120
+    integrations:
+      app_store_connect: Rudrank ASC API Key
+    triggering:
+      events:
+        - push
     environment:
-      xcode: 13.3
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.rudrankriyam.codemagician
+      vars:
+        BUNDLE_ID: "com.rudrankriyam.codemagician"
+        XCODE_PROJECT: "Codemagician.xcodeproj"
+        XCODE_SCHEME: "Codemagician"
+        APP_ID: "6444817719"
+      xcode: latest
       cocoapods: default
     scripts:
-      - bundle install
-      - name: Add 12.9 2nd Gen iPad
-        script: xcrun simctl create "iPad Pro (12.9-inch) (2nd generation)" "com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-" "com.apple.CoreSimulator.SimRuntime.iOS-15-4"
-      - bundle exec fastlane snapshot
+      - name: Set up provisioning profiles settings on Xcode project
+        script: xcode-project use-profiles
+      - name: Increment build number
+        script: |
+          cd $CM_BUILD_DIR
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number "$APP_ID")
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+      - name: Build IPA for distribution
+        script: |
+          xcode-project build-ipa -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME"
     artifacts:
-      - ./screenshots
+      - build/ios/ipa/*.ipa
