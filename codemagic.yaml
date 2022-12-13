@@ -15,17 +15,11 @@ workflows:
         BUNDLE_ID: "com.rudrankriyam.codemagician"
         XCODE_PROJECT: "Codemagician.xcodeproj"
         XCODE_SCHEME: "Codemagician"
-        APP_ID: "6444817719"
       xcode: latest
       cocoapods: default
     scripts:
       - name: Set up provisioning profiles settings on Xcode project
         script: xcode-project use-profiles
-      - name: Increment build number
-        script: |
-          cd $CM_BUILD_DIR
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number "$APP_ID")
-          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build IPA for distribution
         script: |
           xcode-project build-ipa -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME"
